@@ -1,0 +1,4 @@
+group,n_officers_in_dataset,n_complaints,n_sustained,n_not_sustained,n_unfounded,n_exonerated,n_disciplined,pct_sustained,pct_disciplined
+Burge,22,162,12,85,36,11,7,7.4,4.3
+Guevara,9,113,8,47,24,6,5,7.1,4.4
+CPD overall (2011-2015 baseline),~22000,29000,754,,,,754,2.6,2.6
