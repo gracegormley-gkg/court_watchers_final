@@ -563,8 +563,22 @@ a:hover { text-decoration-thickness: 2px; }
 
 /* Timeline inline variant — narrower year column, smaller text, tighter rhythm */
 .chart--timeline.chart--inline {
+  float: right;
   width: 28rem;
-  max-width: 50%;
+  max-width: 45%;
+  margin: 0.3rem 0 1.2rem 1.8rem;
+  clear: right;
+}
+.chart--timeline.chart--inline .chart__title {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  font-weight: 400;
+  color: var(--ink);
+  margin: 0 0 0.6rem;
+  padding-bottom: 0.4rem;
+  border-bottom: 1px solid var(--ink);
 }
 .chart--timeline.chart--inline .timeline { font-size: 0.85em; }
 .chart--timeline.chart--inline .timeline__entry {
@@ -1018,6 +1032,7 @@ a:hover { text-decoration-thickness: 2px; }
 }
 .hero__date { white-space: nowrap; }
 
+.prose.article p.endmark,
 .endmark {
   text-align: center;
   font-family: var(--mono);
@@ -1025,6 +1040,23 @@ a:hover { text-decoration-thickness: 2px; }
   color: var(--ink-tertiary);
   margin-top: 2rem;
 }
+
+.prose.article p.coda,
+.coda {
+  font-family: var(--mono);
+  font-size: 12px;
+  line-height: 1.6;
+  letter-spacing: 0.06em;
+  color: var(--ink-secondary);
+  text-align: center;
+  hyphens: manual;
+  -webkit-hyphens: manual;
+  max-width: 42rem;
+  margin: 1.5rem auto 0;
+  padding-top: 1rem;
+  border-top: 1px solid var(--rule);
+}
+.coda a { color: var(--blood); }
 
 /* -- ARTICLE STORY SECTIONS ----------------------------------------------- */
 .story--article {
@@ -1042,8 +1074,6 @@ a:hover { text-decoration-thickness: 2px; }
   display: block;
   clear: both;
 }
-/* Last paragraph in each article prose carries no bottom margin */
-.prose.article > p:last-child { margin-bottom: 0; }
 .story--article .prose,
 .prose.article {
   max-width: 60rem;
