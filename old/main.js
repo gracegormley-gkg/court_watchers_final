@@ -3,6 +3,7 @@ import * as d3 from "https://cdn.jsdelivr.net/npm/d3@7/+esm";
 
 import { renderInversion } from "./charts/inversion.js";
 import { renderLookup } from "./charts/lookup.js";
+import { renderCompliance } from "./charts/compliance.js";
 
 // --- Track which section is on screen → update fixed file label -----------
 function trackSection() {
@@ -51,6 +52,15 @@ async function boot() {
       load: () => d3.csv("top500_officers.csv", d3.autoType),
       render: (data) => renderLookup("#chart-lookup", data),
       label: "lookup",
+    },
+    {
+      load: () => Promise.resolve(null),
+      render: () => {
+        const r = () => renderCompliance("#chart-compliance");
+        r();
+        onResize(r);
+      },
+      label: "compliance",
     },
   ];
 

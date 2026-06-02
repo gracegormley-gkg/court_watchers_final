@@ -56,13 +56,36 @@ a:hover { text-decoration-thickness: 2px; }
 /* -- Paper grain overlay (disabled for clean white background) ----------- */
 .grain { display: none; }
 
-/* -- File label removed -------------------------------------------------- */
-.file-label { display: none; }
+/* -- File label (fixed top-left) ------------------------------------------ */
+.file-label {
+  position: fixed;
+  top: 1.1rem;
+  left: var(--gutter);
+  right: var(--gutter);
+  z-index: 10;
+  font-family: var(--mono);
+  font-size: 11.5px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-secondary);
+  display: flex;
+  gap: 0.65rem;
+  align-items: baseline;
+  pointer-events: none;
+}
+.file-label__sep { color: var(--ink-tertiary); }
+.file-label__section {
+  color: var(--ink);
+  margin-left: auto;
+  padding-left: 1rem;
+  border-left: 1px solid var(--rule-strong);
+  transition: color 0.3s ease;
+}
 
 /* -- Main typography ------------------------------------------------------- */
 .story__title {
   font-family: var(--serif-display);
-  font-weight: 400;
+  font-weight: 600;
   font-size: clamp(2rem, 5.2vw, 3.6rem);
   line-height: 1.02;
   letter-spacing: -0.018em;
@@ -88,7 +111,7 @@ a:hover { text-decoration-thickness: 2px; }
 }
 .prose--narrow { max-width: 34rem; }
 .prose p { margin: 0 0 1.2rem; }
-.prose strong { font-weight: 400; }
+.prose strong { font-weight: 600; }
 .prose em { font-style: italic; }
 
 .pull {
@@ -145,7 +168,7 @@ a:hover { text-decoration-thickness: 2px; }
   outline: none;
 }
 .simple-code-btn__tag {
-  font-weight: 400;
+  font-weight: 600;
   font-size: 0.85rem;
   line-height: 1;
 }
@@ -162,7 +185,7 @@ a:hover { text-decoration-thickness: 2px; }
 }
 .chapter__number {
   font-family: var(--serif-display);
-  font-weight: 400;
+  font-weight: 800;
   font-size: clamp(4rem, 10vw, 6rem);
   line-height: 0.85;
   letter-spacing: -0.04em;
@@ -189,8 +212,6 @@ a:hover { text-decoration-thickness: 2px; }
 }
 .story--centerpiece { background: linear-gradient(to bottom, var(--paper) 0%, var(--paper-shadow) 60%, var(--paper) 100%); }
 .story--sources { border-top: 2px solid var(--ink); }
-.story--kicker { border-top: none; padding-top: 0; }
-.story--article { border-top: none; }
 
 /* -- Cover ---------------------------------------------------------------- */
 .cover {
@@ -217,7 +238,7 @@ a:hover { text-decoration-thickness: 2px; }
 }
 .cover__title {
   font-family: var(--serif-display);
-  font-weight: 400;
+  font-weight: 800;
   font-size: clamp(2rem, 5.5vw, 4.5rem);
   line-height: 0.95;
   letter-spacing: -0.025em;
@@ -282,7 +303,7 @@ a:hover { text-decoration-thickness: 2px; }
   padding-top: 0.75rem;
 }
 .chart__cap-num {
-  font-weight: 400;
+  font-weight: 600;
   color: var(--ink);
   border-right: 1px solid var(--rule-strong);
   padding-right: 0.9rem;
@@ -298,7 +319,7 @@ a:hover { text-decoration-thickness: 2px; }
 }
 .chart .axis-tick { fill: var(--ink-tertiary); font-size: 10.5px; text-transform: uppercase; }
 .chart .annotation { fill: var(--ink); font-size: 11.5px; }
-.chart .annotation--name { font-family: var(--serif-display); font-size: 14px; font-style: italic; font-weight: 400; }
+.chart .annotation--name { font-family: var(--serif-display); font-size: 14px; font-style: italic; font-weight: 600; }
 .chart .annotation--blood { fill: var(--blood); }
 .chart .axis path, .chart .axis line { stroke: var(--rule); shape-rendering: crispEdges; }
 .chart .axis-base { stroke: var(--ink); stroke-width: 1; }
@@ -320,7 +341,7 @@ a:hover { text-decoration-thickness: 2px; }
   fill: var(--paper);
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  font-weight: 400;
+  font-weight: 600;
   pointer-events: none;
 }
 .chart--censored .redact-label tspan { display: block; }
@@ -340,12 +361,12 @@ a:hover { text-decoration-thickness: 2px; }
 .chart--inversion .ramp-dot { fill: var(--ink); }
 .chart--inversion .ramp-dot--blood { fill: var(--blood); }
 .chart--inversion .stack-segment { stroke: var(--paper); stroke-width: 1; }
-.chart--inversion .stack-label { fill: var(--paper); font-weight: 400; font-size: 11px; }
+.chart--inversion .stack-label { fill: var(--paper); font-weight: 600; font-size: 11px; }
 .chart--inversion .stack-label--outside { fill: var(--ink); }
 .chart--inversion .ramp-callout-num {
   font-family: var(--serif-display);
   font-size: 28px;
-  font-weight: 400;
+  font-weight: 600;
   fill: var(--ink);
   font-variation-settings: "opsz" 144;
 }
@@ -377,7 +398,7 @@ a:hover { text-decoration-thickness: 2px; }
   font-size: 12px;
   letter-spacing: 0.15em;
   text-transform: uppercase;
-  font-weight: 400;
+  font-weight: 600;
 }
 
 /* -- §05 LOOKUP ----------------------------------------------------------- */
@@ -446,7 +467,7 @@ a:hover { text-decoration-thickness: 2px; }
   font-size: 10.5px;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  font-weight: 400;
+  font-weight: 600;
   color: var(--ink);
   padding: 0.8rem 0.75rem 0.6rem;
   border-bottom: 1.5px solid var(--ink);
@@ -462,7 +483,7 @@ a:hover { text-decoration-thickness: 2px; }
 .lookup .rank { color: var(--ink-tertiary); width: 4rem; }
 .lookup .rank a { text-decoration: none; color: inherit; }
 .lookup .rank a:hover { color: var(--ink); text-decoration: underline; }
-.lookup .name { font-weight: 400; }
+.lookup .name { font-weight: 600; }
 .lookup .crew-badge {
   display: inline-block;
   font-family: var(--mono);
@@ -533,74 +554,6 @@ a:hover { text-decoration-thickness: 2px; }
 .map__swatch--blood  { border-top-color: var(--blood); }
 
 .map__svg { width: 100%; height: auto; display: block; }
-.map__img { display: block; width: 100%; height: auto; }
-
-/* Inline figure variants: sit centered in the flow, no wrapping */
-.chart--inline {
-  float: none;
-  width: 100%;
-  max-width: 36rem;
-  margin: 1.25rem auto;
-  display: block;
-}
-.chart--inline .chart__cap { margin-top: 0.4rem; }
-
-.article-photo--inline {
-  float: none;
-  width: 100%;
-  max-width: 36rem;
-  margin: 1.25rem auto;
-  padding: 0;
-  display: block;
-}
-.article-photo.article-photo--wide {
-  width: calc(100vw - 6rem);
-  max-width: calc(100vw - 6rem);
-  padding: 0;
-  margin-left: calc(50% - 50vw + 3rem);
-  margin-right: calc(50% - 50vw + 3rem);
-}
-
-/* Timeline inline variant — narrower year column, smaller text, tighter rhythm */
-.chart--timeline.chart--inline {
-  width: 28rem;
-  max-width: 50%;
-}
-.chart--timeline.chart--inline .timeline { font-size: 0.85em; }
-.chart--timeline.chart--inline .timeline__entry {
-  grid-template-columns: 3.2rem 1fr;
-  gap: 0.75rem;
-  padding: 0.3rem 0.25rem;
-  align-items: baseline;
-}
-.chart--timeline.chart--inline .timeline__year {
-  font-size: 1.2rem;
-  padding-top: 0;
-  line-height: 1.1;
-}
-.chart--timeline.chart--inline .timeline__body { padding-left: 0.85rem; border-left-color: var(--rule); }
-.chart--timeline.chart--inline .timeline__body::before { top: 0.4rem; width: 6px; height: 6px; left: -3.5px; }
-.chart--timeline.chart--inline .timeline__title {
-  font-size: 0.95rem;
-  line-height: 1.15;
-}
-.chart--timeline.chart--inline .timeline__title::after { font-size: 0.95rem; }
-.chart--timeline.chart--inline .timeline__body p { font-size: 0.82rem; line-height: 1.45; text-align: left; hyphens: manual; }
-.chart--timeline.chart--inline .timeline__body[open] .timeline__title { margin-bottom: 0.35rem; }
-
-@media (max-width: 720px) {
-  .chart--inline,
-  .article-photo--inline,
-  .chart--timeline.chart--inline {
-    float: none;
-    width: auto;
-    max-width: none;
-    margin: 1.5rem 0;
-  }
-  .chart--timeline.chart--inline .timeline__entry {
-    grid-template-columns: 6rem 1fr;
-  }
-}
 
 .map__svg .map__box {
   fill: var(--paper);
@@ -614,7 +567,7 @@ a:hover { text-decoration-thickness: 2px; }
 
 .map__svg .map__box-title {
   font-family: var(--serif-display);
-  font-weight: 400;
+  font-weight: 700;
   font-size: 14px;
   fill: var(--ink);
   text-anchor: middle;
@@ -639,7 +592,7 @@ a:hover { text-decoration-thickness: 2px; }
   fill: var(--ink);
   letter-spacing: 0.18em;
   text-transform: uppercase;
-  font-weight: 400;
+  font-weight: 600;
 }
 
 .map__svg .map__tier-tag {
@@ -648,7 +601,7 @@ a:hover { text-decoration-thickness: 2px; }
   fill: var(--ink-tertiary);
   letter-spacing: 0.2em;
   text-transform: uppercase;
-  font-weight: 400;
+  font-weight: 600;
 }
 .map__svg .map__tier-name {
   font-family: var(--serif-display);
@@ -718,7 +671,7 @@ a:hover { text-decoration-thickness: 2px; }
   text-transform: uppercase;
 }
 .timeline__era-tag {
-  font-weight: 400;
+  font-weight: 600;
   color: var(--ink);
 }
 .timeline__era-name {
@@ -746,7 +699,7 @@ a:hover { text-decoration-thickness: 2px; }
 
 .timeline__year {
   font-family: var(--serif-display);
-  font-weight: 400;
+  font-weight: 800;
   font-size: 2.4rem;
   line-height: 1;
   letter-spacing: -0.02em;
@@ -773,45 +726,22 @@ a:hover { text-decoration-thickness: 2px; }
   border-radius: 50%;
 }
 .timeline__entry--blood .timeline__body::before { background: var(--blood); }
-
-/* Collapsible summary — show title only by default, expand on click */
 .timeline__title {
   font-family: var(--serif-display);
-  font-weight: 400;
+  font-weight: 600;
   font-size: 1.25rem;
   line-height: 1.2;
   letter-spacing: -0.005em;
-  margin: 0;
+  margin: 0 0 0.5rem;
   color: var(--ink);
-  cursor: pointer;
-  list-style: none;
-  display: flex;
-  align-items: baseline;
-  justify-content: space-between;
-  gap: 0.75rem;
-  transition: color 0.15s ease;
 }
-.timeline__title::-webkit-details-marker { display: none; }
-.timeline__title::after {
-  content: "+";
-  font-family: var(--mono);
-  font-size: 1.1rem;
-  line-height: 1;
-  color: var(--ink-tertiary);
-  flex-shrink: 0;
-  transition: transform 0.2s ease;
-}
-.timeline__body[open] .timeline__title::after { content: "−"; }
-.timeline__title:hover { color: var(--blood); }
-.timeline__title:hover::after { color: var(--blood); }
-.timeline__body[open] .timeline__title { margin-bottom: 0.6rem; }
 .timeline__body p {
   margin: 0;
   font-size: 1rem;
   line-height: 1.55;
   color: var(--ink-secondary);
 }
-.timeline__body p strong { color: var(--ink); font-weight: 400; }
+.timeline__body p strong { color: var(--ink); font-weight: 600; }
 
 .timeline__cite {
   font-family: var(--mono);
@@ -897,54 +827,23 @@ a:hover { text-decoration-thickness: 2px; }
    ARTICLE FORMAT — hero, prose article, pull quotes, inline photos, explore
    ========================================================================= */
 
-/* -- HERO — full-bleed photo, edge-to-edge ------------------------------- */
+/* -- HERO ----------------------------------------------------------------- */
 .hero {
-  max-width: none;
-  margin: 0;
-  padding: 0 0 clamp(1.5rem, 4vh, 3rem);
+  max-width: 70rem;
+  margin: 0 auto;
+  padding: clamp(2.5rem, 6vh, 5rem) var(--gutter) clamp(2rem, 5vh, 4rem);
 }
 .hero__photo {
-  margin: 0;
+  margin: 0 0 2rem;
   position: relative;
-  overflow: hidden;
-  width: 100%;
-}
-/* Dark gradient over the image so the headline reads */
-.hero__photo::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background:
-    linear-gradient(
-      to bottom,
-      rgba(0,0,0,0.35) 0%,
-      rgba(0,0,0,0.45) 45%,
-      rgba(0,0,0,0.78) 100%
-    );
-  pointer-events: none;
 }
 .hero__img {
   display: block;
   width: 100%;
   height: auto;
-  max-height: 85vh;
+  max-height: 70vh;
   object-fit: cover;
-  filter: brightness(0.78) contrast(1.02);
-}
-/* Headline + dek + byline sit over the photo */
-.hero__overlay {
-  position: absolute;
-  inset: auto 0 0 0;
-  z-index: 2;
-  padding: clamp(1.5rem, 5vw, 3.5rem);
-  color: #FFFFFF;
-}
-.hero__overlay .hero__kicker { color: #F2BABA; }
-.hero__overlay .hero__headline { color: #FFFFFF; }
-.hero__overlay .hero__dek { color: rgba(255,255,255,0.9); }
-.hero__overlay .hero__byline {
-  color: rgba(255,255,255,0.85);
-  border-top: 1px solid rgba(255,255,255,0.4);
+  border: 1px solid var(--ink);
 }
 .hero__placeholder {
   display: none;
@@ -963,9 +862,7 @@ a:hover { text-decoration-thickness: 2px; }
 }
 .hero__placeholder small { font-size: 10px; letter-spacing: 0.1em; opacity: 0.7; }
 .hero__caption {
-  margin: 0.75rem auto 0;
-  padding: 0 var(--gutter);
-  max-width: 70rem;
+  margin-top: 0.75rem;
   font-family: var(--mono);
   font-size: 11px;
   color: var(--ink-tertiary);
@@ -987,7 +884,7 @@ a:hover { text-decoration-thickness: 2px; }
 }
 .hero__headline {
   font-family: var(--serif-display);
-  font-weight: 400;
+  font-weight: 700;
   font-size: clamp(2rem, 4.8vw, 3.4rem);
   line-height: 1.04;
   letter-spacing: -0.02em;
@@ -1011,68 +908,27 @@ a:hover { text-decoration-thickness: 2px; }
   margin: 0;
   padding-top: 1rem;
   border-top: 1px solid var(--rule);
-  display: flex;
-  justify-content: space-between;
-  align-items: baseline;
-  gap: 1rem;
-}
-.hero__date { white-space: nowrap; }
-
-.endmark {
-  text-align: center;
-  font-family: var(--mono);
-  letter-spacing: 0.4em;
-  color: var(--ink-tertiary);
-  margin-top: 2rem;
 }
 
 /* -- ARTICLE STORY SECTIONS ----------------------------------------------- */
 .story--article {
-  padding-top: 0;
-  padding-bottom: 0;
+  padding-top: clamp(1.5rem, 4vh, 3rem);
+  padding-bottom: clamp(1.5rem, 4vh, 3rem);
 }
-/* Drop the clearfix between consecutive article sections so a float from the
-   previous section can extend into the next, letting the next section's first
-   paragraph wrap around the tail of the float instead of starting below it. */
-.story--article .prose.article::after { content: none; }
-/* Re-enable clearing only after the last article section (so floats don't bleed
-   into Explore More / Sources, which have their own visual frame). */
-.story--article:not(:has(+ .story--article)) .prose.article::after {
-  content: "";
-  display: block;
-  clear: both;
-}
-/* Last paragraph in each article prose carries no bottom margin */
-.prose.article > p:last-child { margin-bottom: 0; }
 .story--article .prose,
 .prose.article {
-  max-width: 60rem;
-  margin-bottom: 0;
-}
-.story--article .prose.article::after,
-.prose.article::after {
-  content: "";
-  display: block;
-  clear: both;
+  max-width: 36rem;
 }
 .prose.article p {
   font-size: 1.05rem;
-  line-height: 1.6;
-  margin: 0 0 0.75rem;
-  text-align: justify;
-  text-justify: inter-word;
-  hyphens: auto;
-  -webkit-hyphens: auto;
-  text-wrap: pretty;
-  orphans: 2;
-  widows: 2;
+  line-height: 1.65;
+  margin: 0 0 1.1rem;
 }
-.prose.article p.lede { text-align: left; hyphens: manual; }
 .prose.article p.lede {
   font-family: var(--serif-display);
   font-size: clamp(1.25rem, 2vw, 1.55rem);
   line-height: 1.35;
-  font-weight: 400;
+  font-weight: 600;
   color: var(--ink);
   margin: 0 0 1.6rem;
   border-left: none;
@@ -1081,57 +937,26 @@ a:hover { text-decoration-thickness: 2px; }
   letter-spacing: -0.005em;
 }
 
-/* -- PULL QUOTES — float right, body text wraps around -------------------- */
+/* -- PULL QUOTES (in article prose) --------------------------------------- */
 .pull-quote {
-  float: right;
-  width: 22rem;
-  max-width: 45%;
-  margin: 0.3rem 0 0.9rem 1.6rem;
-  padding: 0.4rem 0 0.6rem 1rem;
-  border-left: 2px solid var(--blood);
+  margin: 2rem 0;
+  padding: 1.2rem 0 1.2rem 1.4rem;
+  border-left: 3px solid var(--blood);
   font-family: var(--serif-display);
   font-style: italic;
-  font-size: clamp(1rem, 1.3vw, 1.2rem);
-  line-height: 1.25;
+  font-size: clamp(1.2rem, 2vw, 1.5rem);
+  line-height: 1.35;
   color: var(--ink);
-  shape-outside: margin-box;
-  shape-margin: 0.4rem;
 }
 .pull-quote cite {
   display: block;
-  margin-top: 0.7rem;
+  margin-top: 0.85rem;
   font-family: var(--mono);
   font-style: normal;
   font-size: 11px;
   letter-spacing: 0.06em;
   color: var(--ink-tertiary);
   text-transform: uppercase;
-}
-.pull-quote--left {
-  float: left;
-  margin: 0.3rem 1.6rem 0.9rem 0;
-  padding: 0.4rem 1rem 0.6rem 0;
-  border-left: none;
-  border-right: 2px solid var(--blood);
-  text-align: right;
-}
-.pull-quote--left cite {
-  text-align: right;
-}
-
-@media (max-width: 720px) {
-  .pull-quote,
-  .pull-quote--left {
-    float: none;
-    width: auto;
-    max-width: none;
-    margin: 1.5rem 0;
-    padding: 0.6rem 0 0.8rem 1rem;
-    border-right: none;
-    border-left: 2px solid var(--blood);
-    text-align: left;
-  }
-  .pull-quote--left cite { text-align: left; }
 }
 .kicker-quote {
   margin: 1.5rem 0 0;
@@ -1182,7 +1007,7 @@ a:hover { text-decoration-thickness: 2px; }
   color: var(--ink-tertiary);
 }
 .article-photo__caption strong {
-  font-weight: 400;
+  font-weight: 600;
   color: var(--ink);
   display: block;
   margin-bottom: 0.25rem;
@@ -1201,7 +1026,7 @@ a:hover { text-decoration-thickness: 2px; }
 }
 .explore-block__title {
   font-family: var(--serif-display);
-  font-weight: 400;
+  font-weight: 600;
   font-size: clamp(1.4rem, 2.4vw, 1.9rem);
   line-height: 1.15;
   margin: 0 0 0.8rem;

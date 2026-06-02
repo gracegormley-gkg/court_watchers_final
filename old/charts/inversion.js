@@ -20,7 +20,7 @@ export function renderInversion(selector, data) {
   const isNarrow = W < 720;
   const H = isNarrow ? 720 : 520;
 
-  const M = { top: 40, right: 32, bottom: 60, left: 32 };
+  const M = { top: 72, right: 32, bottom: 60, left: 32 };
   const topPanelH = isNarrow ? 220 : 130;
   const gap = isNarrow ? 60 : 40;
   const bottomPanelTop = M.top + topPanelH + gap;
@@ -54,15 +54,6 @@ export function renderInversion(selector, data) {
     .attr("class", "axis-tick")
     .style("text-transform", "uppercase")
     .text("WHO IS IN EACH BAND →");
-  topG
-    .append("text")
-    .attr("x", innerW)
-    .attr("y", -16)
-    .attr("text-anchor", "end")
-    .attr("class", "axis-tick")
-    .style("text-transform", "uppercase")
-    .text(`${totalOfficers.toLocaleString()} OFFICERS`);
-
   // Compute segment widths
   let cum = 0;
   const segs = bands.map((b) => {
@@ -91,7 +82,9 @@ export function renderInversion(selector, data) {
     .attr("fill", (d, i) => (i === bands.length - 1 ? "var(--blood)" : "var(--ink)"))
     .attr("fill-opacity", (d, i) => (i === bands.length - 1 ? 1 : inkScale(i)));
 
-  // Band labels: inside if wide enough, otherwise above with leader
+  // Band labels: inside if wide enough, otherwise stacked as a right-aligned callout column
+  const narrowSegs = segs.map((s, i) => ({ ...s, i })).filter((s) => s.w <= 60);
+  const rowSpacing = 16;
   segs.forEach((s, i) => {
     const isLast = i === segs.length - 1;
     const wide = s.w > 60;
@@ -118,14 +111,15 @@ export function renderInversion(selector, data) {
         .attr("opacity", 0.78)
         .text(s.n.toLocaleString());
     } else {
-      // Leader up to a label above the bar
-      const labelY = isLast ? -34 : -22;
-      const labelX = isLast ? Math.min(innerW, s.x1 + 4) : cx;
-      const anchor = isLast ? "end" : "middle";
+      // Stack narrow-band labels in a right-aligned column above the bar.
+      // Leftmost narrow sits closest to the bar; rightmost (the dramatic 100+) sits highest.
+      const narrowIdx = narrowSegs.findIndex((ns) => ns.i === i);
+      const labelY = -18 - narrowIdx * rowSpacing;
+      const labelX = innerW;
 
       topG
         .append("path")
-        .attr("d", `M${cx},0 L${cx},${labelY + 6} L${labelX},${labelY + 6}`)
+        .attr("d", `M${cx},0 L${cx},${labelY + 5} L${labelX},${labelY + 5}`)
         .attr("fill", "none")
         .attr("stroke", isLast ? "var(--blood)" : "var(--ink)")
         .attr("stroke-width", 0.7);
@@ -133,7 +127,7 @@ export function renderInversion(selector, data) {
         .append("text")
         .attr("x", labelX)
         .attr("y", labelY)
-        .attr("text-anchor", anchor)
+        .attr("text-anchor", "end")
         .attr("class", "stack-label stack-label--outside")
         .attr("font-family", "var(--mono)")
         .attr("font-size", 11)
